@@ -13,14 +13,13 @@ export const convertToText = (url, browserId, fileName) => {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMC0wOS0yMFQxMDo0NToxMy4zNTlaIiwiZW1haWwiOiJzc3dhcmFqc2FtYW50QGdtYWlsLmNvbSIsImlhdCI6MTYwMDU5ODcxM30.5f0JmvISp1dWD_JR9941mEDTIKQhI29hPg3_0muEd-k",
       "Content-Type": "application/x-www-form-urlencoded",
-      "Access-Control-Allow-Origin": "http://localhost:3000/",
     },
     data: data,
   };
 
   axios(config)
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       let d = JSON.stringify(response.data.text);
       let j = JSON.parse(d).replace(/\n/g, "\n\n");
       let newObj = { url, text: j, fileName };

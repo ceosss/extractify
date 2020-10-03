@@ -16,15 +16,19 @@ import CTA from "./Components/CTA/CTA";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [userFiles, setUserFiles] = useState();
-  let browserId = localStorage.getItem("browserId");
+  let browserId;
+  if (window) {
+    browserId = window.localStorage.getItem("browserId");
+  }
   const [open, toggleOpen] = useState(browserId ? 0 : 1);
 
   useEffect(() => {
     setLoading(true);
     if (!browserId) {
       let id = uuidv4();
-      localStorage.setItem("browserId", id);
+      window.localStorage.setItem("browserId", id);
       browserId = id;
+      setLoading(false);
     } else {
       const itemsRef = firebase.database().ref(`data/${browserId}`);
       itemsRef.on("value", (snapshot) => {
