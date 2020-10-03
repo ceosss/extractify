@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+
+import firebase from "../../firebase/firebase";
+
 import { Modal } from "react-responsive-modal";
 import ReactMarkdown from "react-markdown";
+import { MdDeleteSweep } from "react-icons/md";
 
 import "react-responsive-modal/styles.css";
 import "./SingleConvertedFile.scss";
-
-import { MdDeleteSweep } from "react-icons/md";
-
-import firebase from "../../firebase/firebase";
 
 const SingleConvertedFile = ({ url, text, browserId, id, fileName }) => {
   const [open, toggleOpen] = useState(false);
@@ -22,7 +22,6 @@ const SingleConvertedFile = ({ url, text, browserId, id, fileName }) => {
       <div className="single-list">
         <iframe src={url} title="small-preview"></iframe>
         <div className="more">
-          {/* <p>{`${text.slice(1, 40)}...`}</p> */}
           <p>{fileName}</p>
           <button onClick={() => toggleOpen(true)}>Show Converted</button>
         </div>
@@ -33,7 +32,10 @@ const SingleConvertedFile = ({ url, text, browserId, id, fileName }) => {
         open={open}
         onClose={() => toggleOpen(false)}
         center
-        closeOnOverlayClick={false}
+        closeOnOverlayClick={true}
+        classNames={{
+          modal: "customModal",
+        }}
       >
         <div className="content">
           {url && (

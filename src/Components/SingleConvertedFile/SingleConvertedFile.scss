@@ -11,6 +11,7 @@
     width: 650px;
     transition: 300ms ease-in-out;
     position: relative;
+    overflow-x: hidden;
     iframe {
       height: 80%;
       width: 50%;
@@ -37,14 +38,23 @@
         outline: none;
         border: none;
         border-radius: 25px;
-
         cursor: pointer;
         text-transform: uppercase;
+        @media screen and (max-width: 700px) {
+          width: 90%;
+          padding: 10px 0;
+        }
       }
     }
     &:hover {
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
       transform: translateY(-20px) scale(1.05);
+    }
+    @media screen and (max-width: 700px) {
+      width: 90%;
+      .more {
+        margin-left: 15px;
+      }
     }
   }
 }
@@ -60,16 +70,15 @@
     height: 800px;
     padding: 15px;
     background-color: white;
-    // border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     position: relative;
     h2 {
       height: 5%;
       text-align: center;
-      font-size: 30px;
+      font-size: 35px;
       margin: 10px auto 20px auto;
       color: #1dd1a1;
-      // position: fixed;
     }
     iframe {
       width: 100%;
@@ -83,4 +92,20 @@
       overflow-y: scroll;
     }
   }
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    div {
+      width: 95%;
+      margin: 30px auto;
+    }
+  }
+}
+.customModal {
+  width: 90%;
+  max-width: unset;
+  background-color: #1dd1a1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
